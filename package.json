@@ -1,0 +1,31 @@
+{
+  "name": "javascript-study",
+  "version": "0.0.0",
+  "description": "some demos and notes of js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "node:cjs": "node src/cjs/index.cjs",
+    "node:esm": "node src/esm/index.mjs",
+    "node:ts": "ts-node src/ts/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skrupellose/JavaScript-Study.git"
+  },
+  "keywords": [
+    "note/demo"
+  ],
+  "author": "hel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Skrupellose/JavaScript-Study/issues"
+  },
+  "homepage": "https://github.com/Skrupellose/JavaScript-Study#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "ts-node": "^10.8.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
+  }
+}
