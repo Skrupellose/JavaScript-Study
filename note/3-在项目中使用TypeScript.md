@@ -21,7 +21,7 @@ TypeScript是JavaScript的超集，新增类型系统，解决JS作为一门动�
 
 
 ## 3.使用
-### 用TS定义原始数据类型
+### 3.1 用TS定义原始数据类型
 
 |原始数据类型|Javascript|TypeScript|
 |---|---|---|
@@ -45,7 +45,7 @@ const num = 123
 const bool = true
 ```
 
-### 用TS定义引用类型
+### 3.2 用TS定义引用类型
 数组类型定义
 类型声明格式：类型+[ ] eg: string[ ]
 ```
@@ -66,7 +66,7 @@ const user:UserItem = {
     name:'john'
 }
 ```
-同时还可以实现继承
+### 3.4 实现接口继承
 ```
 interface Admin extends UserItem {
     power:number
@@ -76,3 +76,47 @@ const admin: Admin = {
     power: 5
 }
 ```
+
+如果继承的对象类型有部分属性需要舍弃，那么可以借助Omit类型来删除
+```
+type Omit<T,K extends string | number | symbol> 
+```
+
+```
+interface UserItem {
+    name: string
+    age: number
+    enjoyFoods: string[]
+}
+// 这里舍弃age和enjoyFoods字段
+interface SuperAdmin extends Omit<UserItem,'age' | 'enjoyFoods'> {
+    power: number
+}
+const superAdmin: SuperAdmin {
+    name: 'Tony',
+    power: 5
+}
+
+```
+
+同样接口也可以继承类，且可以通过Omit类型删除方法与属性
+```
+class EUserBase {
+    name: string
+    constructor(userName: string) {
+        this.name = userName
+    }
+    getName() {
+        console.log(this.name)
+    }
+}
+
+interface User extends Omit<EUserBase, 'getName'> {
+    age: number
+}
+const user: User = {
+    name: 'user1',
+    age: 5
+}
+```
+### 3.5 
